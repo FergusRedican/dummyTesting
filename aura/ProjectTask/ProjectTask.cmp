@@ -1,0 +1,23 @@
+<aura:component controller="ProjectTaskController" implements="force:appHostable">
+    <ltng:require styles="/resource/ldt__SLDS202/assets/styles/salesforce-lightning-design-system-ltng.min.css"/>
+    <aura:attribute name="projects" type="ldt_Project__c[]" access="private"/>
+    <aura:attribute name="selectedProjId" type="String" access="public"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="ldtdev">
+        <section class="project-list">
+            <h3 class="slds-section-title--divider">Task Management App</h3>
+            <div class="slds-p-top--x-small" style="margin-left: 30px;margin-right: 30px;">
+                <div>Select Project:</div>
+                <ui:inputSelect class="slds-input selHeight1" value="{!v.selectedProjId}">
+                    <ui:inputSelectOption label="--None--" text="" />
+                    <aura:iteration items="{!v.projects}" var="project">
+                        <ui:inputSelectOption label="{!project.Name}" text="{!project.Id}" />
+                    </aura:iteration>
+                </ui:inputSelect>
+                <c:projecTaskList projectId="{!v.selectedProjId}"/>
+            </div>
+        </section>
+    </div>
+</aura:component>

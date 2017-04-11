@@ -1,0 +1,44 @@
+<aura:component controller="LineItemScheduleController"
+implements="flexipage:availableForRecordHome,force:hasRecordId">
+     <aura:attribute name="recordId" type="String" access="public"/>
+     <aura:attribute name="lineItemId" type="String" access="public"
+     default="{!v.recordId}"/>
+     <aura:attribute name="lineItemSchedules" type="OpportunityLineItemSchedule[]" access="public"/>
+     <aura:attribute name="scheduleColumns" type="List" access="public"/>
+     <aura:attribute name="scheduleTableConfig" type="Map" access="public"/>
+     <aura:handler name="init" value="{!this}" action="{!c.fetchSchedules}" />
+     <section class="project-task-list slds-p-top--x-small">
+         <div class="task-list slds-p-top--medium">
+             <ldt:datatableDev title="Schedules" aura:id="scheduleTable"
+             dataRows="{!v.lineItemSchedules}" header="{!v.scheduleColumns}"
+             config="{!v.scheduleTableConfig}"/>
+         </div>
+     </section>
+    
+    
+ 	<aura:attribute name="selectedSchedule" type="OpportunityLineItemSchedule" access="public"
+default="{'sobjectType':'OpportunityLineItemSchedule', 'Quantity':'', 'ScheduleDate':'', 'Description':'', 'OpportunityLineItemId':''}"/>
+	<aura:attribute name="scheduleOpType" type="String" access="private"/>
+	<aura:handler name="dtActionClick" event="ldt:clickedDtAction" action="{!c.tabActionClicked}"/>
+
+	<!-- Edit Schedule Modal Begin -->
+	<c:sldsModal aura:id="scheduleEditModal" closeAction="{!c.closeScheduleModal}">
+        <aura:set attribute="header">
+            {!v.scheduleOpType} Schedule 
+        </aura:set>
+        <aura:set attribute="content">
+            <div class="task-inputs">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-p-horizontal--small slds-size--1-of-2">
+                        <ui:inputDate label="Start Date" labelClass="slds-form-element__label" class="slds-input dateFix" value="{!v.selectedSchedule.ScheduleDate}" displayDatePicker="true"/>
+                    </div>
+                </div>
+            </div>
+        </aura:set>
+        <aura:set attribute="footer">
+            <button class="slds-button slds-button--neutral" onclick="{!c.closeScheduleModal}">Cancel</button>
+            <button class="slds-button slds-button--brand" onclick="{!c.saveSchedule}">Ok</button>
+        </aura:set>
+	</c:sldsModal>
+	<!-- Edit Schedule Modal End -->
+</aura:component>

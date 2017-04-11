@@ -1,0 +1,11 @@
+<!-- helloWorld.cmp -->
+<aura:component implements="force:appHostable">
+    <c:helloHeading />
+    <h1>Hello Lightning Component!</h1> 
+     <div class="container">
+         <h1>Another h1 tag</h1>
+         <div class="red">I'm red.</div>
+         <div class="blue">I'm blue.</div>
+         <div class="green">I'm green.</div>
+     </div>
+</aura:component>

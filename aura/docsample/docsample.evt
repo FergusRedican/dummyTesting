@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT">
+    <!--simple event with no attributes-->
+</aura:event>

@@ -1,0 +1,29 @@
+<aura:component access="public">
+    <aura:attribute name="header" type="Aura.Component[]" access="public"/>
+    <aura:attribute name="content" type="Aura.Component[]" access="public"/>
+    <aura:attribute name="footer" type="Aura.Component[]" access="public"/>
+    <aura:attribute name="closeAction" type="Aura.Action" access="public"/>
+
+    <aura:method name="open" action="{!c.toggleModal}" />
+    <aura:method name="close" action="{!c.toggleModal}" />
+
+	<div class="slds-modal" aura:id="modal" aria-hidden="false" role="dialog">
+  		<div class="slds-modal__container">
+            <div class="slds-modal__header" onclick="{!v.closeAction}">
+                <button class="slds-button slds-button--icon-inverse slds-modal__close">
+                    <c:svgIcon svgPath="/resource/ldt__SLDS202/assets/icons/utility-sprite/svg/symbols.svg#close" class="slds-button__icon slds-button__icon--medium" containerClass="slds-icon_container"/>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 class="slds-text-heading--medium">{!v.header}</h2>
+            </div>
+             <div class="slds-modal__content slds-p-around--medium">
+                {!v.content}
+            </div>
+            <div class="slds-modal__footer">
+                {!v.footer}
+            </div>
+        </div>
+    </div>
+    
+    <div class="slds-backdrop" aura:id="modal-backdrop"></div> 
+</aura:component>

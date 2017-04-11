@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable">
+    <ui:inputNumber aura:id="inputOne" label="Input One"/>
+    <ui:inputNumber aura:id="inputTwo" label="Input Two"/>
+    <ui:inputNumber aura:id="inputThree" label="Input Three"/>
+    <ui:button label="Calculate" press="{!c.calculate}"/>
+    <ui:outputNumber aura:id="totalValue" value=""/>
+</aura:component>

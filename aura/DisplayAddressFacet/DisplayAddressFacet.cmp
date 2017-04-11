@@ -1,0 +1,16 @@
+<aura:component >
+	<!--<auradocs:DisplayAddress>-->
+        <aura:set attribute="Street">
+            Weymouth Street
+        </aura:set>
+        <aura:set attribute="City">
+            London
+        </aura:set>
+        <aura:set attribute="State">
+            Middlesex
+        </aura:set>
+        <aura:set attribute="PostalCode">
+           W1 1RD
+        </aura:set>        
+   <!--</auradocs:DisplayAddress>-->
+</aura:component>

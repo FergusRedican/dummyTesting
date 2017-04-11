@@ -1,0 +1,3 @@
+<aura:component implements="force:appHostable" Controller="WB_MarqueeController">
+	{!marqueMessage}
+</aura:component>

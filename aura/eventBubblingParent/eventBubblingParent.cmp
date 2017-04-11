@@ -1,0 +1,6 @@
+<!--docsample:eventBubblingParent-->
+<aura:component >
+    <!--<docsample:eventBubblingChild>
+        <docsample:eventBubblingGrandchild />
+    </docsample:eventBubblingChild>-->
+</aura:component>

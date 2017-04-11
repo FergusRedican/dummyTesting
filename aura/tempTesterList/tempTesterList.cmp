@@ -1,0 +1,45 @@
+<aura:component controller="LineItemScheduleController"
+implements="flexipage:availableForRecordHome,force:hasRecordId">
+ <aura:attribute name="recordId" type="String" access="public"/>
+ <aura:attribute name="projectId" type="String" access="public"
+ default="{!v.recordId}"/>
+ <aura:attribute name="projectTasks" type="OpportunityLineItemSchedule[]" access="public"/>
+ <aura:attribute name="taskColumns" type="List" access="public"/>
+ <aura:attribute name="taskTableConfig" type="Map" access="public"/>
+ <aura:handler name="init" value="{!this}" action="{!c.fetchTasks}" />
+ <section class="project-task-list slds-p-top--x-small">
+ <div class="task-list slds-p-top--medium">
+ <ldt:datatableDev title="Project Tasks Tester" aura:id="taskTable"
+ dataRows="{!v.projectTasks}" header="{!v.taskColumns}"
+ config="{!v.taskTableConfig}"/>
+ </div>
+ </section>
+ <aura:attribute name="selectedTask" type="OpportunityLineItemSchedule" access="public"
+default="{'sobjectType':'OpportunityLineItemSchedule', 'Quantity':'', 'ScheduleDate':'', 'Description':'', 'OpportunityLineItemId':''}"/>
+<aura:attribute name="taskOpType" type="String" access="private"/>
+<aura:handler name="dtActionClick" event="ldt:clickedDtAction" action="{!c.tabActionClicked}"/>
+<!-- Edit Task Modal Begin -->
+<c:sldsModal aura:id="taskEditModal" closeAction="{!c.closeTaskModal}">
+ <aura:set attribute="header">
+ {!v.taskOpType} Task 
+ </aura:set>
+ <aura:set attribute="content">
+ <div class="task-inputs">
+ <div class="slds-grid slds-wrap">
+ <div class="slds-p-horizontal--small slds-size--1-of-2">
+ <ui:inputText label="Task Name" labelClass="slds-form-
+ element__label" class="slds-input"
+ value="{!v.selectedTask.Quantity}" />
+ </div>
+ </div>
+ </div>
+ </aura:set>
+ <aura:set attribute="footer">
+ <button class="slds-button slds-button--neutral"
+ onclick="{!c.closeTaskModal}">Cancel</button>
+ <button class="slds-button slds-button--brand"
+ onclick="{!c.saveTask}">Ok</button>
+ </aura:set>
+</c:sldsModal>
+<!-- Edit Task Modal End -->    
+</aura:component>
