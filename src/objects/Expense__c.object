@@ -85,24 +85,6 @@
         <type>Date</type>
     </fields>
     <fields>
-        <fullName>DemoField2__c</fullName>
-        <externalId>false</externalId>
-        <label>DemoField2</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>DemoField__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>DemoField</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Reimbursed__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
